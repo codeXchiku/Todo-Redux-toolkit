@@ -4,7 +4,8 @@ import { removeTodo } from '../features/todo/todoSlice'
 
 const Todos = () => {
     const todos = useSelector((state) => state.todo.todos)
-    console.log(todos);
+    
+
     const dispatch = useDispatch()
 
     const handleDelete = (id)=>{
@@ -14,6 +15,7 @@ const Todos = () => {
     return (
         <>
         <h1>Todos</h1>
+
         <ul>
           {todos.map((todo) => (
             <li key={todo.id}>
