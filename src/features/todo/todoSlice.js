@@ -11,7 +11,7 @@ const todoSlice = createSlice({
             //"action" -> for accessing "text" and "id" 
             // "state"(current state) ->how many added how many removed
                 const todo = {
-                    id:nanoid,
+                    id:nanoid(),
                     text:action.payload
                 }
                 state.todos.push(todo)
