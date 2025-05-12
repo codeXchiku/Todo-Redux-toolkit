@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { removeTodo } from '../features/todo/todoSlice'
+import { completeTodo, removeTodo } from '../features/todo/todoSlice'
 
 const Todos = () => {
     const todos = useSelector((state) => state.todo.todos)
@@ -9,8 +9,10 @@ const Todos = () => {
     const dispatch = useDispatch()
 
     const handleDelete = (id)=>{
-      console.log(id);
         dispatch(removeTodo(id))
+    }
+    const handleComplete = (id)=>{
+      dispatch(completeTodo(id))
     }
     return (
         <div className='dark:text-white'>
@@ -18,9 +20,10 @@ const Todos = () => {
 
         <ul>
           {todos.map((todo) => (
-            <li key={todo.id}>
+            <li key={todo.id} className={todo.completed ? "line-through text-gray-500" : ""}>
+              <input type="checkbox" checked={todo.completed} onChange={()=>handleComplete(todo.id)} className='mr-2' />
               {todo.text}
-              <button onClick={() => handleDelete(todo.id)}> X </button>
+              <button onClick={() => handleDelete(todo.id)} className='ml-2 text-red-600 font-bold border rounded'> X </button>
             </li>
           ))}
         </ul>
