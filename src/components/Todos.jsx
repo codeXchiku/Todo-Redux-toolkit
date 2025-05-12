@@ -13,7 +13,7 @@ const Todos = () => {
         dispatch(removeTodo(id))
     }
     return (
-        <>
+        <div className='dark:text-white'>
         <h1>Todos</h1>
 
         <ul>
@@ -24,7 +24,7 @@ const Todos = () => {
             </li>
           ))}
         </ul>
-      </>
+      </div>
     )
 }
 

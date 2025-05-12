@@ -13,7 +13,7 @@ const AddTodo = () => {
         setInput('')
     }
   return (
-    <div>
+    <div className='dark:text-white'>
       <input 
         type="text" 
         placeholder="Add new todo" 
