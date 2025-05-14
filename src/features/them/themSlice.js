@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const themSlice = createSlice({
     name:"theme",
-    initialState:"light",
+    initialState: localStorage.getItem("theme") || "light",
     reducers:{
         toggle:(state,action)=>{
             const newTheme = state ==="dark"?"light":"dark"

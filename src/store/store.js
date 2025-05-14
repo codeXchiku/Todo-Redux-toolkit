@@ -4,10 +4,18 @@ import countReducer from "../features/counter/CountSlice";
 import themeReducer from "../features/them/themSlice";
 
 
-export const store = configureStore({
+const store = configureStore({
     reducer:{
         todo:todoReducer,
         count:countReducer,
         theme:themeReducer
     }
 });
+
+store.subscribe(() => {
+  const state = store.getState();
+  localStorage.setItem("todos", JSON.stringify(state.todo.todos));
+  localStorage.setItem("theme", state.theme);
+});
+
+export default store
