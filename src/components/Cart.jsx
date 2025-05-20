@@ -1,4 +1,6 @@
-import React from 'react';
+
+import { useDispatch } from "react-redux";
+import { addCart } from "../features/cart/cartSlice";
 
 const Cart = () => {
   const products = [
@@ -6,6 +8,10 @@ const Cart = () => {
     { id: 2, name: 'Banana', price: 10 },
     { id: 3, name: 'Mango', price: 50 },
   ];
+  const dispatch = useDispatch()
+  const handleAdd = (id,name,price)=>{
+    dispatch(addCart({id,name,price}))
+  }
 
   return (
     <div className="p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -16,7 +22,7 @@ const Cart = () => {
         >
           <h3 className="text-lg font-semibold">{product.name}</h3>
           <p className="text-gray-500 mb-4">₹{product.price}</p>
-          <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+          <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition" onClick={()=>handleAdd(product.id,product.name,product.price)}>
             Add to Cart
           </button>
         </div>
