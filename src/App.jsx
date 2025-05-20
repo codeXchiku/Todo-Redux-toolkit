@@ -7,6 +7,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { toggle } from './features/them/themSlice'
 import { IoCartOutline } from "react-icons/io5";
 import { useEffect, useState } from 'react'
+import { HiOutlineTrash } from "react-icons/hi2";
+import { removeCart } from './features/cart/cartSlice'
 
 const App = () => {
   const [cartCount, setCartCount] = useState()
@@ -56,13 +58,20 @@ const App = () => {
               ) : (
                 <ul className="space-y-2 max-h-48 overflow-y-auto">
                   {cart.map((item, index) => (
-                    <li key={index} className="flex justify-between text-sm dark:text-white">
+                    <li key={index} className="flex items-center justify-between text-sm dark:text-white gap-2">
                       <span>{item.name}</span>
                       <span>₹{item.price}</span>
+                      <button onClick={() => dispatch(removeCart(item.id))}>
+                        <HiOutlineTrash className="text-red-600 w-5 h-5" />
+                      </button>
                     </li>
                   ))}
                 </ul>
               )}
+              <div className="mt-3 border-t pt-2 flex justify-between text-sm font-semibold dark:text-white">
+                <span>Total:</span>
+                <span>₹{cart.reduce((sum, item) => sum + item.price, 0)}</span>
+              </div>
             </div>
           )}
         </div>

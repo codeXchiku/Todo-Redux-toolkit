@@ -7,6 +7,9 @@ const Cart = () => {
     { id: 1, name: 'Apple', price: 30 },
     { id: 2, name: 'Banana', price: 10 },
     { id: 3, name: 'Mango', price: 50 },
+    { id: 4, name: 'orrange', price: 20 },
+    { id: 5, name: 'grapes', price: 60 },
+    { id: 6, name: 'guava', price: 15 },
   ];
   const dispatch = useDispatch()
   const handleAdd = (id,name,price)=>{

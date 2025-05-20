@@ -18,6 +18,7 @@ store.subscribe(() => {
   const state = store.getState();
   localStorage.setItem("todos", JSON.stringify(state.todo.todos));
   localStorage.setItem("theme", state.theme);
+  localStorage.setItem("cart",JSON.stringify(state.cart))
 });
 
 export default store
